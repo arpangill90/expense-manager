@@ -2,8 +2,7 @@ package com.arpan.expensemanager.data.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +13,9 @@ import java.util.List;
 @Table(name = "app_user")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class AppUser {
 
     @Id

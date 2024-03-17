@@ -1,10 +1,10 @@
 package com.arpan.expensemanager.service;
 
-import com.arpan.expensemanager.data.dto.UserDTO;
+import com.arpan.expensemanager.data.dto.UserDto;
 
-public interface UserService  {
+public interface UserService {
 
-    UserDTO retrieveUser(long userId);
-    UserDTO addUser(UserDTO userDTO);
+    UserDto retrieveUser(long userId);
+    UserDto addUser(UserDto userDTO);
     void deleteUser(long userId);
 }

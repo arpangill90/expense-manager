@@ -1,6 +1,7 @@
 package com.arpan.expensemanager.service.impl;
 
-import com.arpan.expensemanager.data.dto.UserDTO;
+import com.arpan.expensemanager.data.UserMapper;
+import com.arpan.expensemanager.data.dto.UserDto;
 import com.arpan.expensemanager.data.entity.AppUser;
 import com.arpan.expensemanager.data.repository.UserRespository;
 import com.arpan.expensemanager.service.UserService;
@@ -12,20 +13,21 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     private final UserRespository userRespository;
+    private final UserMapper userMapper;
 
     @Override
-    public UserDTO retrieveUser(long userId) {
+    public UserDto retrieveUser(long userId) {
         AppUser appuser = userRespository.findUserWithId(userId);
-        return null;
+        return userMapper.appUserToUserDto(appuser);
     }
 
     @Override
-    public UserDTO addUser(UserDTO userDTO) {
+    public UserDto addUser(UserDto userDTO) {
         return null;
     }
 
     @Override
     public void deleteUser(long userId) {
-
+        //to be updated
     }
 }

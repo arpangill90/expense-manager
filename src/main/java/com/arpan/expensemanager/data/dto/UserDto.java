@@ -1,12 +1,18 @@
 package com.arpan.expensemanager.data.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
-public class UserDTO {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserDto {
 
     private String firstName;
     private String lastName;

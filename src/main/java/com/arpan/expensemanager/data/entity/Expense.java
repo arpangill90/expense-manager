@@ -24,6 +24,18 @@ public class Expense {
     @Column(name = "payment_method")
     private PaymentMethod paymentMethod;
 
+    //1 user can have many expenses
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
+    private AppUser appUser;
+
+    //1 category can have many expenses
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     @Column(name = "created_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime createdDate;
 

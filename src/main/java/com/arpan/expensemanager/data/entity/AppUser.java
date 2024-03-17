@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "app_user")
@@ -42,10 +44,35 @@ public class AppUser {
     @Column(name = "date_of_birth", columnDefinition = "DATE")
     private LocalDate dateOfBirth;
 
+    //keep category even if user is removed
+    @OneToMany(mappedBy = "appUser", cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+    CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Category> categories;
+
+    //remove expenses if user is removed
+    @OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL)
+    private List<Expense> expenses;
+
     @Column(name = "created_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime createdDate;
 
     @Column(name = "updated_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime updatedDate;
+
+    public void addCategory(Category category) {
+        if (null == categories) {
+            categories = new ArrayList<>();
+        }
+        categories.add(category);
+        category.setAppUser(this);
+    }
+
+    public void addExpense(Expense expense) {
+        if (null == expenses) {
+            expenses = new ArrayList<>();
+        }
+        expenses.add(expense);
+        expense.setAppUser(this);
+    }
 
 }

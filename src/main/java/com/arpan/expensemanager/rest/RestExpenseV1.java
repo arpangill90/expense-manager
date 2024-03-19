@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/user/")
-public class RestUserV1 {
+@RequestMapping("/api/expense/")
+public class RestExpenseV1 {
 
 }

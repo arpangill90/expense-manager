@@ -23,7 +23,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto addUser(UserDto userDTO) {
-        return null;
+        AppUser appUser = userMapper.userDtoToAppUser(userDTO);
+        userRespository.save(appUser); //later build method to direct save
+        return userDTO;
     }
 
     @Override

@@ -38,6 +38,11 @@ class UserServiceImplTest {
 
     @Test
     void addUser() {
+        when(userRespository.save(any())).thenReturn(new AppUser());
+
+        userService.addUser(new UserDto());
+
+        verify(userRespository, atMostOnce()).save(any());
     }
 
     @Test

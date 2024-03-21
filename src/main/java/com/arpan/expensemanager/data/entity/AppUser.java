@@ -3,6 +3,8 @@ package com.arpan.expensemanager.data.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -56,9 +58,11 @@ public class AppUser {
     private List<Expense> expenses;
 
     @Column(name = "created_date", columnDefinition = "TIMESTAMP")
+    @CreatedDate
     private LocalDateTime createdDate;
 
     @Column(name = "updated_date", columnDefinition = "TIMESTAMP")
+    @LastModifiedDate
     private LocalDateTime updatedDate;
 
     public void addCategory(Category category) {

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -36,9 +38,11 @@ public class Category {
     private List<Expense> expenses;
 
     @Column(name = "created_date", columnDefinition = "TIMESTAMP")
+    @CreatedDate
     private LocalDateTime createdDate;
 
     @Column(name = "updated_date", columnDefinition = "TIMESTAMP")
+    @LastModifiedDate
     private LocalDateTime updatedDate;
 
     public void addExpense(Expense expense) {

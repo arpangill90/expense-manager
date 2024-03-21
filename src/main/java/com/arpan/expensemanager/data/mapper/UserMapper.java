@@ -1,4 +1,4 @@
-package com.arpan.expensemanager.data;
+package com.arpan.expensemanager.data.mapper;
 
 import com.arpan.expensemanager.data.dto.UserDto;
 import com.arpan.expensemanager.data.entity.AppUser;

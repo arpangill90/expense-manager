@@ -4,6 +4,8 @@ import com.arpan.expensemanager.data.dto.PaymentMethod;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
@@ -37,8 +39,10 @@ public class Expense {
     private Category category;
 
     @Column(name = "created_date", columnDefinition = "TIMESTAMP")
+    @CreatedDate
     private LocalDateTime createdDate;
 
     @Column(name = "updated_date", columnDefinition = "TIMESTAMP")
+    @LastModifiedDate
     private LocalDateTime updatedDate;
 }

@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class UserDto {
 
+    private Integer userId;
     private String firstName;
     private String lastName;
     private String userName;

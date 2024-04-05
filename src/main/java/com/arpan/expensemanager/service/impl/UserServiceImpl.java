@@ -25,6 +25,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserDto addUser(UserDto userDTO) {
+        //make the ID null for auto generate to work
+        userDTO.setUserId(null);
         AppUser appUser = userRepository.saveEntity(userMapper.userDtoToAppUser(userDTO));
         return userMapper.appUserToUserDto(appUser);
     }

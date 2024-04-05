@@ -17,9 +17,14 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override
-    public UserDto retrieveUser(long userId) {
+    public UserDto retrieveUserDto(long userId) {
         AppUser appuser = userRepository.findUserWithId(userId);
         return userMapper.appUserToUserDto(appuser);
+    }
+
+    @Override
+    public AppUser getUserById(long userId) {
+        return userRepository.findUserWithId(userId);
     }
 
     @Override

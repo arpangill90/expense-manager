@@ -7,4 +7,6 @@ import java.util.List;
 public interface CategoryService {
 
     List<CategoryDto> findCategoriesForUser(long userId);
+
+    CategoryDto addCategory(CategoryDto categoryDto, long userId);
 }

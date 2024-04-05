@@ -31,7 +31,7 @@ class UserServiceImplTest {
         when(userRepository.findUserWithId(anyLong())).thenReturn(new AppUser());
         when(userMapper.appUserToUserDto(any())).thenReturn(new UserDto());
 
-        userService.retrieveUser(1);
+        userService.retrieveUserDto(1);
 
         verify(userRepository, atMostOnce()).findUserWithId(anyLong());
     }

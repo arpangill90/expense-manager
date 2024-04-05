@@ -17,7 +17,7 @@ public class RestUserV1 {
 
     @GetMapping("{id}")
     public ResponseEntity<UserDto> retrieveUser(@PathVariable long id) {
-            return new ResponseEntity<>(userService.retrieveUser(id), HttpStatus.OK);
+            return new ResponseEntity<>(userService.retrieveUserDto(id), HttpStatus.OK);
     }
 
     @PostMapping("user")

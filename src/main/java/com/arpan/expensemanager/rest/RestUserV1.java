@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/api/user/")
@@ -19,9 +19,9 @@ public class RestUserV1 {
     private final UserService userService;
 
     @GetMapping("{id}")
-    public ResponseEntity<BaseResponse<UserDto>> retrieveUser(@PathVariable long id) {
+    public ResponseEntity<BaseResponse> retrieveUser(@PathVariable long id) {
         UserDto userDto = userService.retrieveUserDto(id);
-        return new ResponseEntity<>(new BaseResponse<>(userDto, new ArrayList<>()), HttpStatus.OK);
+        return new ResponseEntity<>(new BaseResponse(userDto, HttpStatus.OK.toString(), "", LocalDateTime.now()), HttpStatus.OK);
     }
 
     @PostMapping("user")

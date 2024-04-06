@@ -15,10 +15,11 @@ import java.time.LocalDateTime;
 public class ManagerExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ErrorDetail> handleAllExceptions(Exception ex, WebRequest request)
+    public final ResponseEntity<ErrorResponse> handleAllExceptions(Exception ex, WebRequest request)
             throws Exception {
         log.error(ex.getMessage());
-        return new ResponseEntity<>(new ErrorDetail("Error occurred", LocalDateTime.now(), "500"),
+        return new ResponseEntity<>(new ErrorResponse(null,HttpStatus.INTERNAL_SERVER_ERROR.toString(),
+                "Error processing Request", LocalDateTime.now()),
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

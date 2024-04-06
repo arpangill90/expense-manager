@@ -1,14 +1,18 @@
 package com.arpan.expensemanager.data.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Builder
-public class BaseResponse<T> {
-    private T data;
-    private List<String> errors;
+public class BaseResponse {
+    private Object data;
+    private String status;
+    private String message;
+    private LocalDateTime timeStamp;
 
 }

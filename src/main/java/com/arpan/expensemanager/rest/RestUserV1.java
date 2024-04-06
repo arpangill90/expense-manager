@@ -1,5 +1,6 @@
 package com.arpan.expensemanager.rest;
 
+import com.arpan.expensemanager.data.dto.BaseResponse;
 import com.arpan.expensemanager.data.dto.UserDto;
 import com.arpan.expensemanager.service.UserService;
 import jakarta.validation.Valid;
@@ -7,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/api/user/")
@@ -16,8 +19,9 @@ public class RestUserV1 {
     private final UserService userService;
 
     @GetMapping("{id}")
-    public ResponseEntity<UserDto> retrieveUser(@PathVariable long id) {
-            return new ResponseEntity<>(userService.retrieveUserDto(id), HttpStatus.OK);
+    public ResponseEntity<BaseResponse<UserDto>> retrieveUser(@PathVariable long id) {
+        UserDto userDto = userService.retrieveUserDto(id);
+        return new ResponseEntity<>(new BaseResponse<>(userDto, new ArrayList<>()), HttpStatus.OK);
     }
 
     @PostMapping("user")

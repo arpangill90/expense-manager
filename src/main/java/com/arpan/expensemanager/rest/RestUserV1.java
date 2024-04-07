@@ -21,11 +21,16 @@ public class RestUserV1 {
     @GetMapping("{id}")
     public ResponseEntity<BaseResponse> retrieveUser(@PathVariable long id) {
         UserDto userDto = userService.retrieveUserDto(id);
-        return new ResponseEntity<>(new BaseResponse(userDto, HttpStatus.OK.toString(), "", LocalDateTime.now()), HttpStatus.OK);
+        return new ResponseEntity<>(new BaseResponse(userDto,
+                HttpStatus.OK.toString(), "SUCCESS", LocalDateTime.now()),
+                HttpStatus.OK);
     }
 
     @PostMapping("user")
-    public ResponseEntity<UserDto> addUser(@RequestBody @Valid UserDto user) {
-        return new ResponseEntity<>(userService.addUser(user), HttpStatus.OK);
+    public ResponseEntity<BaseResponse> addUser(@RequestBody @Valid UserDto user) {
+        UserDto userDto = userService.addUser(user);
+        return new ResponseEntity<>(new BaseResponse(userDto,
+                HttpStatus.OK.toString(), "SUCCESS", LocalDateTime.now()),
+                HttpStatus.OK);
     }
 }

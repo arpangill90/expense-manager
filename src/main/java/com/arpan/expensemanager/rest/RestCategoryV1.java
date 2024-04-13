@@ -1,5 +1,6 @@
 package com.arpan.expensemanager.rest;
 
+import com.arpan.expensemanager.data.dto.BaseResponse;
 import com.arpan.expensemanager.data.dto.CategoryDto;
 import com.arpan.expensemanager.service.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -20,8 +22,12 @@ public class RestCategoryV1 {
     private final CategoryService categoryService;
 
     @GetMapping("{user}")
-    public ResponseEntity<List<CategoryDto>> getAllExpenses(@PathVariable long user) {
-        return new ResponseEntity<>(categoryService.findCategoriesForUser(user), HttpStatus.OK);
+    public ResponseEntity<BaseResponse> getAllExpenses(@PathVariable long user) {
+        List<CategoryDto> categoriesForUser = categoryService.findCategoriesForUser(user);
+
+        return new ResponseEntity<>(new BaseResponse(categoriesForUser,
+                HttpStatus.OK.toString(), "SUCCESS", LocalDateTime.now()),
+                HttpStatus.OK);
     }
 
 

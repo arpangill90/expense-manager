@@ -1,5 +1,6 @@
 package com.arpan.expensemanager.rest;
 
+import com.arpan.expensemanager.data.dto.BaseResponse;
 import com.arpan.expensemanager.data.dto.ExpenseDto;
 import com.arpan.expensemanager.service.ExpenseService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -20,8 +22,13 @@ public class RestExpenseV1 {
     private final ExpenseService expenseService;
 
     @GetMapping("{user}")
-    public ResponseEntity<List<ExpenseDto>> getAllExpenses(@PathVariable long user) {
-        return new ResponseEntity<>(expenseService.getUserExpenses(user), HttpStatus.OK);
+    public ResponseEntity<BaseResponse> getAllExpenses(@PathVariable long user) {
+        List<ExpenseDto> userExpenses = expenseService.getUserExpenses(user);
+        return new ResponseEntity<>(BaseResponse.builder()
+                .data(userExpenses)
+                .status(HttpStatus.OK.toString())
+                .timeStamp(LocalDateTime.now())
+                .build(), HttpStatus.OK);
     }
 
 }

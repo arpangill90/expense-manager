@@ -1,6 +1,7 @@
 package com.arpan.expensemanager.data.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -38,7 +39,8 @@ public class AppUser {
     private String userName;
 
     @Column(name = "email", unique = true)
-    @Size(min = 3, max = 50)
+    @Email
+    @Size(min = 6, max = 250)
     private String email;
 
     @Column(name = "phone_number")

@@ -38,7 +38,7 @@ class UserServiceImplTest {
 
     @Test
     void addUser() {
-        when(userRepository.save(any())).thenReturn(new AppUser());
+//        when(userRepository.save(any())).thenReturn(new AppUser());
 
         userService.addUser(new UserDto());
 

@@ -12,6 +12,7 @@ import lombok.Setter;
 public class ExpenseDto {
 
     private Long expenseId;
+    private Float amount;
     private String description;
     private PaymentMethod paymentMethod;
     private AppUser appUser;

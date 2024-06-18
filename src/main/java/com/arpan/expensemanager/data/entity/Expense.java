@@ -2,6 +2,7 @@ package com.arpan.expensemanager.data.entity;
 
 import com.arpan.expensemanager.data.dto.PaymentMethod;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -18,6 +19,10 @@ public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long expenseId;
+
+    @Column(name = "amount")
+    @NotNull
+    private Float amount;
 
     @Column(name = "description")
     private String description;

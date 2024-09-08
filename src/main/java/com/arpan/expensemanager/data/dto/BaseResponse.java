@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
-public class BaseResponse {
-    private Object data;
+public class BaseResponse<T> {
+    private T data;
     private String status;
     private String message;
     private LocalDateTime timeStamp;

@@ -25,14 +25,14 @@ public class RestUserV1 {
     private final UserService userService;
 
     @GetMapping("{id}")
-    public ResponseEntity<BaseResponse<?>> retrieveUser(@PathVariable long id) {
+    public ResponseEntity<UserResponse> retrieveUser(@PathVariable long id) {
         try {
             UserDto userDto = userService.retrieveUserDto(id);
             return new ResponseEntity<>(new UserResponse(userDto,
                     HttpStatus.OK.toString(), SUCCESS, LocalDateTime.now()),
                     HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(new ErrorResponse("ERROR",
+            return new ResponseEntity<>(new UserResponse(null,
                     HttpStatus.INTERNAL_SERVER_ERROR.toString(), FAILURE, LocalDateTime.now()),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
